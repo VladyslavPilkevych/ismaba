@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-white text-ink-900 font-sans antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Architectural grid feel — very subtle background pattern */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Soft accent gradient used in heroes / final CTA */
+.bg-soft-radial {
+  background:
+    radial-gradient(80% 60% at 70% 0%, rgba(31, 140, 132, 0.10), transparent 60%),
+    radial-gradient(60% 40% at 0% 80%, rgba(15, 23, 42, 0.05), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #F8FAFC 100%);
+}
+
+/* Hide scrollbar inside the building viewport but keep page scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
