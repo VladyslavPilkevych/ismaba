@@ -55,7 +55,9 @@ export default function Footer() {
       </div>
       <div className="border-t border-ink-100">
         <div className="mx-auto max-w-6xl px-6 py-6 text-xs text-ink-500 flex flex-col sm:flex-row gap-2 sm:justify-between">
-          <span>{t("footer.copyright", { year: new Date().getFullYear() })}</span>
+          <span>
+            {t("footer.copyright", { year: new Date().getFullYear() })}
+          </span>
           <span>{t("footer.tagline")}</span>
         </div>
       </div>

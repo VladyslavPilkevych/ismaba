@@ -18,7 +18,7 @@ export default function ServicesGrid() {
   const { t } = useTranslation();
   const [openId, setOpenId] = useState<FallbackKind | null>(null);
   const activeService = openId
-    ? services.find((s) => s.id === openId) ?? null
+    ? (services.find((s) => s.id === openId) ?? null)
     : null;
 
   return (

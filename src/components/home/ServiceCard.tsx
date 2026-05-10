@@ -3,13 +3,7 @@ import AnimatedServiceIcon from "./AnimatedServiceIcon";
 export interface ServiceItem {
   title: string;
   text: string;
-  icon:
-    | "lamp"
-    | "pipe"
-    | "elevator"
-    | "chart"
-    | "documents"
-    | "messages";
+  icon: "lamp" | "pipe" | "elevator" | "chart" | "documents" | "messages";
 }
 
 export default function ServiceCard({ service }: { service: ServiceItem }) {

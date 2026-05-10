@@ -3,7 +3,9 @@ import { SUPPORTED_LANGUAGES, type Language } from "../i18n";
 
 export default function LanguageSwitcher() {
   const { t, i18n } = useTranslation();
-  const current = (i18n.resolvedLanguage ?? i18n.language).split("-")[0] as Language;
+  const current = (i18n.resolvedLanguage ?? i18n.language).split(
+    "-",
+  )[0] as Language;
 
   return (
     <div

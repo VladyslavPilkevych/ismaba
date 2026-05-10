@@ -15,19 +15,68 @@ function MissionVisual() {
       aria-hidden="true"
     >
       <rect width="320" height="220" rx="20" fill="#F8FAFC" />
-      <rect x="56" y="60" width="72" height="120" fill="#EEF6F5" stroke="currentColor" strokeWidth="1.4" />
-      <rect x="136" y="40" width="84" height="140" fill="#D6ECEA" stroke="currentColor" strokeWidth="1.4" />
-      <rect x="228" y="78" width="60" height="102" fill="#EEF6F5" stroke="currentColor" strokeWidth="1.4" />
+      <rect
+        x="56"
+        y="60"
+        width="72"
+        height="120"
+        fill="#EEF6F5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+      <rect
+        x="136"
+        y="40"
+        width="84"
+        height="140"
+        fill="#D6ECEA"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+      <rect
+        x="228"
+        y="78"
+        width="60"
+        height="102"
+        fill="#EEF6F5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
       <g opacity="0.6">
-        <path d="M64 80h56M64 100h56M64 120h56M64 140h56M64 160h56" stroke="currentColor" strokeWidth="1" />
+        <path
+          d="M64 80h56M64 100h56M64 120h56M64 140h56M64 160h56"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
         <path d="M80 60v120M104 60v120" stroke="currentColor" strokeWidth="1" />
-        <path d="M144 60h68M144 80h68M144 100h68M144 120h68M144 140h68M144 160h68" stroke="currentColor" strokeWidth="1" />
-        <path d="M164 40v140M188 40v140" stroke="currentColor" strokeWidth="1" />
-        <path d="M236 96h44M236 116h44M236 136h44M236 156h44" stroke="currentColor" strokeWidth="1" />
-        <path d="M252 78v102M268 78v102" stroke="currentColor" strokeWidth="1" />
+        <path
+          d="M144 60h68M144 80h68M144 100h68M144 120h68M144 140h68M144 160h68"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
+        <path
+          d="M164 40v140M188 40v140"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
+        <path
+          d="M236 96h44M236 116h44M236 136h44M236 156h44"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
+        <path
+          d="M252 78v102M268 78v102"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
       </g>
       <rect x="172" y="148" width="16" height="32" fill="#1F8C84" />
-      <path d="M40 180h240" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path
+        d="M40 180h240"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
