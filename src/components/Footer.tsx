@@ -1,9 +1,6 @@
 export default function Footer() {
   return (
-    <footer
-      id="kontakt"
-      className="border-t border-ink-100 bg-ink-50"
-    >
+    <footer className="border-t border-ink-100 bg-ink-50">
       <div className="mx-auto max-w-6xl px-6 py-14 grid gap-10 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-2">
@@ -26,8 +23,8 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2">
             <li>
-              <a className="hover:text-ink-900" href="tel:+421000000000">
-                +421 000 000 000
+              <a className="hover:text-ink-900" href="tel:+421905352554">
+                0905 352 554
               </a>
             </li>
             <li>
@@ -35,7 +32,7 @@ export default function Footer() {
                 info@ismaa.sk
               </a>
             </li>
-            <li>Bratislava, Slovensko</li>
+            <li>Handlovská 2981/28</li>
           </ul>
         </div>
 
