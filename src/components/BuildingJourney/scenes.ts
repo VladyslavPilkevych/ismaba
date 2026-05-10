@@ -2,17 +2,23 @@
  * Each scene defines:
  *  - copy (chapter label, title, problem bubble, solution card)
  *  - camera state: focus point (fraction 0..1 of building height) + scale.
- *    Converted to pixel translateY at runtime by BuildingJourney.
+ *    Converted to pixel translateY at runtime by BuildingJourney using
+ *    centre transform-origin math:
+ *        tY = scale * (0.5 - focus) * bH
  *  - highlight zone (rect on the building, in viewBox units 800x1700)
- *    used by BuildingSVG to softly emphasize the active floor.
  *
  * Building floor layout (viewBox 800x1700):
  *   Roof + facade   y  60–240   (Fasáda zone — exterior)
  *   Floor 4         y 240–480   (Komunikácia — community room)
  *   Floor 3         y 480–720   (Financie — home office)
  *   Floor 2         y 720–960   (Spoločné priestory — hallway + stairs)
- *   Floor 1         y 960–1200  (Vchod — ground entrance, ground line at 1200)
+ *   Floor 1         y 960–1200  (Vchod — ground entrance, ground line @ 1200)
  *   Basement        y 1200–1440 (Technické systémy)
+ *
+ * Camera intent (per user direction):
+ *  - Building stays mostly visible across all scenes — minimal zoom,
+ *    cinematic vertical pan. Each floor is centred to roughly the middle
+ *    of the viewport at its scene; surrounding floors stay in view.
  */
 
 export type SceneKind = "opening" | "scene" | "final";
@@ -28,9 +34,9 @@ export interface Scene {
   solutionBody?: string;
   ctaPrimary?: { label: string; href: string };
   ctaSecondary?: { label: string; href: string };
-  /** Fraction of the building's intrinsic rendered height (0=top, 1=bottom) we want at viewport center. */
+  /** Fraction of the building's intrinsic rendered height (0=top, 1=bottom) we want at viewport centre. */
   focus: number;
-  /** Camera scale applied to the building element (1.0 = natural rendered size). */
+  /** Scale applied around the building's centre. 1.0 = natural rendered size. */
   scale: number;
   /** Highlight rectangle in viewBox units (800x1700). Optional. */
   highlight?: { x: number; y: number; w: number; h: number };
@@ -49,7 +55,7 @@ export const scenes: Scene[] = [
     ctaPrimary: { label: "Kontaktujte nás", href: "#kontakt" },
     ctaSecondary: { label: "Pozrieť služby", href: "#sluzby" },
     focus: 0.5,
-    scale: 0.5,
+    scale: 1.0,
   },
   {
     id: "fasada",
@@ -60,9 +66,9 @@ export const scenes: Scene[] = [
     solutionTitle: "Plán modernizácie a financovanie",
     solutionBody:
       "Pomôžeme s plánom obnovy, financovaním a koordináciou realizácie — od posúdenia stavu fasády až po odovzdanie diela.",
-    focus: 0.118,
-    scale: 1.0,
-    highlight: { x: 40, y: 40, w: 720, h: 220 },
+    focus: 0.18,
+    scale: 1.05,
+    highlight: { x: 40, y: 60, w: 720, h: 200 },
   },
   {
     id: "vchod",
@@ -74,7 +80,7 @@ export const scenes: Scene[] = [
     solutionBody:
       "Zabezpečujeme technickú správu, komunikáciu s dodávateľmi a riešenie každodenných požiadaviek vlastníkov.",
     focus: 0.635,
-    scale: 1.0,
+    scale: 1.05,
     highlight: { x: 80, y: 960, w: 640, h: 240 },
   },
   {
@@ -100,7 +106,7 @@ export const scenes: Scene[] = [
     solutionBody:
       "Koordinujeme odborný servis, povinné kontroly a technické riešenia tak, aby dom fungoval bezpečne a bez prekvapení.",
     focus: 0.776,
-    scale: 1.1,
+    scale: 1.08,
     highlight: { x: 80, y: 1200, w: 640, h: 240 },
   },
   {
@@ -138,6 +144,6 @@ export const scenes: Scene[] = [
       "Spojte sa s nami a pozrime sa spolu na váš bytový dom. Pripravíme návrh správy presne podľa potrieb vašej komunity.",
     ctaPrimary: { label: "Kontaktujte ISMAA", href: "#kontakt" },
     focus: 0.5,
-    scale: 0.55,
+    scale: 1.0,
   },
 ];

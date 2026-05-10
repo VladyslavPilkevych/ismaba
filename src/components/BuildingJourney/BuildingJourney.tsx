@@ -12,18 +12,24 @@ import { useIsMobile } from "../../hooks/useIsMobile";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Camera math.
- *  - Building wrapper is positioned absolutely at the top of a viewport
- *    (overflow:hidden) and rendered at its natural aspect ratio. Transform
- *    origin is "50% 0%" — scale pivots around the building's horizontal
- *    centre and top edge.
- *  - For focus point f (0..1 of building rendered height) and scale s, the
- *    translateY needed to centre that point in the viewport is:
- *        tY = vH/2 - s * f * bH
+ * Camera math (centre transform-origin).
+ *
+ * Layout:
+ *  - The building wrapper sits centred against the open sky via CSS
+ *    (its outer wrapper translates to the chosen anchor point in the
+ *    viewport). GSAP applies translateY + scale to the inner wrapper
+ *    with transform-origin: 50% 50%.
+ *  - With the centre origin, scaling expands the building around its
+ *    own centre. To bring a focus point f (0..1 of building height)
+ *    to the viewport vertical centre we shift the wrapper by:
+ *        tY = scale * (0.5 - focus) * bH
+ *    where bH is the building wrapper's rendered height (px).
+ *  - The camera stays mostly still — scenes only nudge tY (and a touch
+ *    of scale) so the building never feels cropped.
  */
-function cameraFor(scene: Scene, vH: number, bH: number) {
+function cameraFor(scene: Scene, bH: number) {
   return {
-    y: vH / 2 - scene.scale * scene.focus * bH,
+    y: scene.scale * (0.5 - scene.focus) * bH,
     scale: scene.scale,
   };
 }
@@ -31,7 +37,6 @@ function cameraFor(scene: Scene, vH: number, bH: number) {
 function DesktopJourney() {
   const sectionRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
-  const viewportRef = useRef<HTMLDivElement>(null);
   const buildingRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const cardsRef = useRef<Array<HTMLDivElement | null>>([]);
@@ -41,23 +46,19 @@ function DesktopJourney() {
     if (!sectionRef.current || !pinRef.current) return;
 
     const ctx = gsap.context(() => {
-      const measure = () => ({
-        vH: viewportRef.current?.offsetHeight ?? 700,
-        bH: buildingRef.current?.offsetHeight ?? 1500,
-      });
+      const measure = () => buildingRef.current?.offsetHeight ?? 700;
 
-      // Initial state — set synchronously so first paint is correct.
-      const { vH: v0, bH: b0 } = measure();
-      const cam0 = cameraFor(scenes[0], v0, b0);
+      // Initial state — synchronous so first paint matches scene 0.
+      const cam0 = cameraFor(scenes[0], measure());
       gsap.set(buildingRef.current, {
         y: cam0.y,
         scale: cam0.scale,
-        transformOrigin: "50% 0%",
+        transformOrigin: "50% 50%",
         force3D: true,
       });
       cardsRef.current.forEach((el, i) => {
         if (!el) return;
-        gsap.set(el, { opacity: i === 0 ? 1 : 0, y: i === 0 ? 0 : 24 });
+        gsap.set(el, { opacity: i === 0 ? 1 : 0, y: i === 0 ? 0 : 18 });
       });
       const allHighlights = svgRef.current?.querySelectorAll(".bj-highlight");
       if (allHighlights) gsap.set(allHighlights, { opacity: 0 });
@@ -81,17 +82,14 @@ function DesktopJourney() {
         },
       });
 
-      // 1) Camera path (N-1 transitions, duration 1 each).
+      // 1) Camera path — N-1 transitions, duration 1 each.
       for (let i = 1; i < scenes.length; i++) {
         const target = scenes[i];
         tl.to(
           buildingRef.current,
           {
-            y: () => {
-              const { vH, bH } = measure();
-              return cameraFor(target, vH, bH).y;
-            },
-            scale: () => cameraFor(target, measure().vH, measure().bH).scale,
+            y: () => cameraFor(target, measure()).y,
+            scale: () => cameraFor(target, measure()).scale,
             ease: "power1.inOut",
             duration: 1,
           },
@@ -99,7 +97,7 @@ function DesktopJourney() {
         );
       }
 
-      // 2) Scene card crossfades.
+      // 2) Card crossfades.
       scenes.forEach((_, i) => {
         const card = cardsRef.current[i];
         if (!card) return;
@@ -113,7 +111,7 @@ function DesktopJourney() {
         if (i < scenes.length - 1) {
           tl.to(
             card,
-            { opacity: 0, y: -24, ease: "power2.in", duration: 0.5 },
+            { opacity: 0, y: -18, ease: "power2.in", duration: 0.5 },
             i - 0.05
           );
         }
@@ -140,11 +138,11 @@ function DesktopJourney() {
       style={{ height: `${scenes.length * 100}vh` }}
       aria-label="Interaktívna cesta budovou"
     >
-      <div ref={pinRef} className="h-screen w-full overflow-hidden">
-        <div className="relative h-full mx-auto max-w-[1400px] px-6 grid grid-cols-12 gap-8 items-stretch">
+      <div ref={pinRef} className="h-screen w-full relative overflow-hidden">
+        <div className="relative h-full mx-auto max-w-[1500px]">
           {/* Vertical scroll progress on the far left */}
           <div
-            className="hidden lg:block absolute left-2 top-1/2 -translate-y-1/2 h-[64%] w-px bg-ink-900/10 overflow-hidden"
+            className="hidden lg:block absolute left-6 top-1/2 -translate-y-1/2 h-[60%] w-px bg-ink-900/15 overflow-hidden"
             aria-hidden="true"
           >
             <div
@@ -154,54 +152,58 @@ function DesktopJourney() {
             />
           </div>
 
-          {/* ----------- Building stage (dominant) ----------- */}
-          <div className="col-span-7 relative h-full flex items-center">
+          {/* ---------- Central building stage ---------- */}
+          {/* Outer wrapper — pure CSS positioning. Centres the inner
+              wrapper at (~42%, 50%) of the stage, slightly left of true
+              centre to leave breathing room for the floating card. */}
+          <div className="absolute top-1/2 left-[44%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+            {/* Inner wrapper — receives the GSAP transform.
+                Building height clamps so it stays readable on every
+                viewport while filling ~80% of the screen height on a
+                typical desktop. */}
             <div
-              ref={viewportRef}
-              className="relative w-full h-[92%] overflow-hidden"
+              ref={buildingRef}
+              className="will-change-transform"
+              style={{ transformOrigin: "50% 50%" }}
             >
-              <div
-                ref={buildingRef}
-                className="absolute inset-x-0 top-0 will-change-transform"
-              >
-                <BuildingSVG
-                  ref={svgRef}
-                  className="block w-full h-auto select-none"
-                />
-              </div>
-              {/* Soft sky-coloured fades so building edges blend into the sky */}
-              <div
-                className="pointer-events-none absolute inset-x-0 top-0 h-24"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(216,234,242,0.95), rgba(216,234,242,0))",
-                }}
-              />
-              <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
-                style={{
-                  background:
-                    "linear-gradient(to top, rgba(242,247,248,0.95), rgba(242,247,248,0))",
-                }}
+              <BuildingSVG
+                ref={svgRef}
+                className="block h-[clamp(480px,88vh,920px)] w-auto select-none"
               />
             </div>
           </div>
 
-          {/* ----------- Scenes panel (right) ----------- */}
-          <div className="col-span-5 relative h-full">
+          {/* ---------- Floating story card overlay ---------- */}
+          <div className="absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 w-full max-w-[460px] pointer-events-none">
             {scenes.map((scene, i) => (
               <div
                 key={scene.id}
                 ref={(el) => {
                   cardsRef.current[i] = el;
                 }}
-                className="absolute inset-0 flex items-center"
+                className={
+                  i === 0
+                    ? "pointer-events-auto"
+                    : "absolute top-0 left-0 right-0 pointer-events-auto"
+                }
               >
-                <SceneCard scene={scene} index={i} />
+                <div className="rounded-2xl border border-white/60 bg-white/85 backdrop-blur-md shadow-soft px-7 py-7">
+                  <SceneCard scene={scene} index={i} />
+                </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Subtle warm haze along the horizon line so the building's
+            earth strip blends gracefully into the sky background. */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[18vh]"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(232,221,196,0.55), rgba(232,221,196,0))",
+          }}
+        />
       </div>
     </section>
   );
