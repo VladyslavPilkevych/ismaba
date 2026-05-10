@@ -1,12 +1,18 @@
 /**
  * Each scene defines:
  *  - copy (chapter label, title, problem bubble, solution card)
- *  - camera state: where the building should sit relative to the viewport,
- *    expressed as a focus point (fraction 0..1 of building height) +
- *    scale factor. Positions are converted to pixel translateY at runtime
- *    based on the measured viewport / building heights.
- *  - highlight zone (a rect on the building, in viewBox units 600x2400)
- *    used by BuildingSVG to gently emphasize the active floor.
+ *  - camera state: focus point (fraction 0..1 of building height) + scale.
+ *    Converted to pixel translateY at runtime by BuildingJourney.
+ *  - highlight zone (rect on the building, in viewBox units 800x1700)
+ *    used by BuildingSVG to softly emphasize the active floor.
+ *
+ * Building floor layout (viewBox 800x1700):
+ *   Roof + facade   y  60–240   (Fasáda zone — exterior)
+ *   Floor 4         y 240–480   (Komunikácia — community room)
+ *   Floor 3         y 480–720   (Financie — home office)
+ *   Floor 2         y 720–960   (Spoločné priestory — hallway + stairs)
+ *   Floor 1         y 960–1200  (Vchod — ground entrance, ground line at 1200)
+ *   Basement        y 1200–1440 (Technické systémy)
  */
 
 export type SceneKind = "opening" | "scene" | "final";
@@ -26,11 +32,11 @@ export interface Scene {
   focus: number;
   /** Camera scale applied to the building element (1.0 = natural rendered size). */
   scale: number;
-  /** Highlight rectangle in viewBox units (600x2400). Optional. */
+  /** Highlight rectangle in viewBox units (800x1700). Optional. */
   highlight?: { x: number; y: number; w: number; h: number };
 }
 
-export const SVG_VIEWBOX = { w: 600, h: 2400 };
+export const SVG_VIEWBOX = { w: 800, h: 1700 };
 
 export const scenes: Scene[] = [
   {
@@ -43,7 +49,7 @@ export const scenes: Scene[] = [
     ctaPrimary: { label: "Kontaktujte nás", href: "#kontakt" },
     ctaSecondary: { label: "Pozrieť služby", href: "#sluzby" },
     focus: 0.5,
-    scale: 0.4,
+    scale: 0.5,
   },
   {
     id: "fasada",
@@ -54,9 +60,9 @@ export const scenes: Scene[] = [
     solutionTitle: "Plán modernizácie a financovanie",
     solutionBody:
       "Pomôžeme s plánom obnovy, financovaním a koordináciou realizácie — od posúdenia stavu fasády až po odovzdanie diela.",
-    focus: 0.08,
-    scale: 1.05,
-    highlight: { x: 60, y: 80, w: 480, h: 320 },
+    focus: 0.118,
+    scale: 1.0,
+    highlight: { x: 40, y: 40, w: 720, h: 220 },
   },
   {
     id: "vchod",
@@ -67,9 +73,9 @@ export const scenes: Scene[] = [
     solutionTitle: "Technická správa a údržba",
     solutionBody:
       "Zabezpečujeme technickú správu, komunikáciu s dodávateľmi a riešenie každodenných požiadaviek vlastníkov.",
-    focus: 0.62,
-    scale: 1.15,
-    highlight: { x: 60, y: 1380, w: 480, h: 280 },
+    focus: 0.635,
+    scale: 1.0,
+    highlight: { x: 80, y: 960, w: 640, h: 240 },
   },
   {
     id: "spolocne",
@@ -80,9 +86,9 @@ export const scenes: Scene[] = [
     solutionTitle: "Postup, rozpočet, rozhodnutie",
     solutionBody:
       "Navrhneme postup, pripravíme rozpočet a pomôžeme vlastníkom rozhodnúť sa — s podkladmi, ktoré sú jasné a porovnateľné.",
-    focus: 0.38,
-    scale: 1.15,
-    highlight: { x: 60, y: 820, w: 480, h: 320 },
+    focus: 0.494,
+    scale: 1.05,
+    highlight: { x: 80, y: 720, w: 640, h: 240 },
   },
   {
     id: "technicke",
@@ -93,9 +99,9 @@ export const scenes: Scene[] = [
     solutionTitle: "Servis, kontroly, riešenia",
     solutionBody:
       "Koordinujeme odborný servis, povinné kontroly a technické riešenia tak, aby dom fungoval bezpečne a bez prekvapení.",
-    focus: 0.85,
-    scale: 1.2,
-    highlight: { x: 60, y: 1900, w: 480, h: 360 },
+    focus: 0.776,
+    scale: 1.1,
+    highlight: { x: 80, y: 1200, w: 640, h: 240 },
   },
   {
     id: "financie",
@@ -106,9 +112,9 @@ export const scenes: Scene[] = [
     solutionTitle: "Vyúčtovanie a fond opráv",
     solutionBody:
       "Zabezpečujeme prehľadné hospodárenie, vyúčtovanie a správu fondu opráv — s dokladmi, ktoré si môže pozrieť každý vlastník.",
-    focus: 0.27,
-    scale: 1.1,
-    highlight: { x: 60, y: 500, w: 480, h: 300 },
+    focus: 0.353,
+    scale: 1.05,
+    highlight: { x: 80, y: 480, w: 640, h: 240 },
   },
   {
     id: "komunikacia",
@@ -119,19 +125,19 @@ export const scenes: Scene[] = [
     solutionTitle: "Schôdze a transparentnosť",
     solutionBody:
       "Pomáhame s prípravou schôdzí, podkladmi pre hlasovanie a komunikáciou s vlastníkmi — aby rozhodnutia mali oporu a dom mal pokoj.",
-    focus: 0.16,
+    focus: 0.212,
     scale: 1.05,
-    highlight: { x: 60, y: 240, w: 480, h: 280 },
+    highlight: { x: 80, y: 240, w: 640, h: 240 },
   },
   {
-    id: "final",
+    id: "kontakt",
     kind: "final",
-    chapter: "Záver",
+    chapter: "07 — Kontakt",
     title: "Váš dom môže fungovať pokojnejšie, prehľadnejšie a zodpovednejšie.",
     subtitle:
       "Spojte sa s nami a pozrime sa spolu na váš bytový dom. Pripravíme návrh správy presne podľa potrieb vašej komunity.",
     ctaPrimary: { label: "Kontaktujte ISMAA", href: "#kontakt" },
     focus: 0.5,
-    scale: 0.42,
+    scale: 0.55,
   },
 ];

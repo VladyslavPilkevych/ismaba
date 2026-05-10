@@ -33,6 +33,14 @@ body {
     linear-gradient(180deg, #ffffff 0%, #F8FAFC 100%);
 }
 
+/* Open atmospheric sky used as the background of the Interactive Building Journey */
+.bg-sky {
+  background:
+    radial-gradient(120% 70% at 50% -10%, #C8E0EA 0%, transparent 60%),
+    radial-gradient(80% 60% at 80% 30%, rgba(245, 199, 123, 0.18), transparent 60%),
+    linear-gradient(180deg, #D8EAF2 0%, #E8F1F4 55%, #F2F7F8 100%);
+}
+
 /* Hide scrollbar inside the building viewport but keep page scroll */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

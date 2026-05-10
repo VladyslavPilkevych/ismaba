@@ -13,12 +13,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Camera math.
- *  - The building element is positioned absolutely at the top of a viewport
- *    (overflow:hidden) and rendered at its natural aspect ratio (taller than
- *    the viewport). Transform-origin is "50% 0%", so scaling happens around
- *    the horizontal center and the top edge.
- *  - For a focus point f (0..1 of building height) and scale s, the
- *    translateY needed to put that point at the viewport vertical center is:
+ *  - Building wrapper is positioned absolutely at the top of a viewport
+ *    (overflow:hidden) and rendered at its natural aspect ratio. Transform
+ *    origin is "50% 0%" — scale pivots around the building's horizontal
+ *    centre and top edge.
+ *  - For focus point f (0..1 of building rendered height) and scale s, the
+ *    translateY needed to centre that point in the viewport is:
  *        tY = vH/2 - s * f * bH
  */
 function cameraFor(scene: Scene, vH: number, bH: number) {
@@ -43,7 +43,7 @@ function DesktopJourney() {
     const ctx = gsap.context(() => {
       const measure = () => ({
         vH: viewportRef.current?.offsetHeight ?? 700,
-        bH: buildingRef.current?.offsetHeight ?? 1920,
+        bH: buildingRef.current?.offsetHeight ?? 1500,
       });
 
       // Initial state — set synchronously so first paint is correct.
@@ -62,7 +62,6 @@ function DesktopJourney() {
       const allHighlights = svgRef.current?.querySelectorAll(".bj-highlight");
       if (allHighlights) gsap.set(allHighlights, { opacity: 0 });
 
-      // Master scrubbed timeline.
       const tl = gsap.timeline({
         defaults: { overwrite: "auto" },
         scrollTrigger: {
@@ -82,7 +81,7 @@ function DesktopJourney() {
         },
       });
 
-      // 1) Camera moves between scenes (N-1 transitions, duration 1 each).
+      // 1) Camera path (N-1 transitions, duration 1 each).
       for (let i = 1; i < scenes.length; i++) {
         const target = scenes[i];
         tl.to(
@@ -104,8 +103,6 @@ function DesktopJourney() {
       scenes.forEach((_, i) => {
         const card = cardsRef.current[i];
         if (!card) return;
-
-        // Fade in
         if (i > 0) {
           tl.to(
             card,
@@ -113,8 +110,6 @@ function DesktopJourney() {
             i - 0.55
           );
         }
-
-        // Fade out
         if (i < scenes.length - 1) {
           tl.to(
             card,
@@ -129,16 +124,8 @@ function DesktopJourney() {
         if (!scene.highlight) return;
         const hl = svgRef.current?.querySelector(`.bj-highlight-${scene.id}`);
         if (!hl) return;
-        tl.to(
-          hl,
-          { opacity: 1, ease: "power2.out", duration: 0.45 },
-          i - 0.4
-        );
-        tl.to(
-          hl,
-          { opacity: 0, ease: "power2.in", duration: 0.45 },
-          i + 0.15
-        );
+        tl.to(hl, { opacity: 1, ease: "power2.out", duration: 0.45 }, i - 0.4);
+        tl.to(hl, { opacity: 0, ease: "power2.in", duration: 0.45 }, i + 0.15);
       });
     }, sectionRef);
 
@@ -149,29 +136,29 @@ function DesktopJourney() {
     <section
       id="cesta"
       ref={sectionRef}
-      className="relative bg-soft-radial"
+      className="relative bg-sky overflow-hidden"
       style={{ height: `${scenes.length * 100}vh` }}
       aria-label="Interaktívna cesta budovou"
     >
-      <div ref={pinRef} className="h-screen overflow-hidden">
-        <div className="h-full mx-auto max-w-7xl px-6 grid grid-cols-12 gap-8 items-center">
-          {/* Vertical scroll progress indicator */}
+      <div ref={pinRef} className="h-screen w-full overflow-hidden">
+        <div className="relative h-full mx-auto max-w-[1400px] px-6 grid grid-cols-12 gap-8 items-stretch">
+          {/* Vertical scroll progress on the far left */}
           <div
-            className="hidden lg:block absolute left-6 top-1/2 -translate-y-1/2 h-[58%] w-px bg-ink-100 overflow-hidden"
+            className="hidden lg:block absolute left-2 top-1/2 -translate-y-1/2 h-[64%] w-px bg-ink-900/10 overflow-hidden"
             aria-hidden="true"
           >
             <div
               ref={progressFillRef}
-              className="absolute inset-0 bg-brand-500 origin-top"
+              className="absolute inset-0 bg-brand-600 origin-top"
               style={{ transform: "scaleY(0)" }}
             />
           </div>
 
-          {/* Building viewport */}
-          <div className="col-span-5 relative h-[78%]">
+          {/* ----------- Building stage (dominant) ----------- */}
+          <div className="col-span-7 relative h-full flex items-center">
             <div
               ref={viewportRef}
-              className="absolute inset-0 overflow-hidden rounded-3xl border border-ink-100 bg-white bg-grid shadow-soft"
+              className="relative w-full h-[92%] overflow-hidden"
             >
               <div
                 ref={buildingRef}
@@ -182,20 +169,26 @@ function DesktopJourney() {
                   className="block w-full h-auto select-none"
                 />
               </div>
-              {/* Soft fades so building edges don't cut sharply */}
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white via-white/85 to-transparent" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/85 to-transparent" />
-            </div>
-
-            {/* Tiny chip indicating it's an architectural cutaway */}
-            <div className="absolute -top-3 left-6 inline-flex items-center gap-2 rounded-full border border-ink-100 bg-white px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-ink-500 shadow-card">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-500" />
-              Bytový dom — rez
+              {/* Soft sky-coloured fades so building edges blend into the sky */}
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-24"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(216,234,242,0.95), rgba(216,234,242,0))",
+                }}
+              />
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(242,247,248,0.95), rgba(242,247,248,0))",
+                }}
+              />
             </div>
           </div>
 
-          {/* Scenes panel */}
-          <div className="col-span-7 relative h-[78%]">
+          {/* ----------- Scenes panel (right) ----------- */}
+          <div className="col-span-5 relative h-full">
             {scenes.map((scene, i) => (
               <div
                 key={scene.id}

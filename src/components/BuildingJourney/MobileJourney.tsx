@@ -3,25 +3,24 @@ import SceneCard from "./SceneCard";
 import { scenes } from "./scenes";
 
 /**
- * Simplified mobile / reduced-motion fallback.
- * Stacks scenes vertically with a small static cutaway header — no pinning,
- * no scrub, no transforms keyed to scroll. Browser native scrolling only.
+ * Mobile / reduced-motion fallback.
+ * Stacked story — no pinning, no scrub, no scroll-keyed transforms.
+ * The illustrated building anchors the top of the section, and each
+ * service is listed below as a regular card.
  */
 export default function MobileJourney() {
   return (
     <section
       id="cesta"
-      className="bg-soft-radial"
+      className="bg-sky"
       aria-label="Interaktívna cesta budovou — zjednodušená verzia"
     >
-      <div className="mx-auto max-w-2xl px-6 py-16">
-        <div className="rounded-3xl border border-ink-100 bg-white shadow-card p-6">
-          <div className="aspect-[2/3] w-full overflow-hidden rounded-2xl bg-gradient-to-b from-white to-ink-50 bg-grid">
-            <BuildingSVG className="w-full h-full" />
-          </div>
+      <div className="mx-auto max-w-2xl px-6 pt-12 pb-20">
+        <div className="aspect-[4/7] w-full">
+          <BuildingSVG className="block w-full h-full" />
         </div>
 
-        <div className="mt-12 space-y-10">
+        <div className="mt-12 space-y-8">
           {scenes.map((scene, i) => (
             <article
               key={scene.id}
