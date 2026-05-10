@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import ServiceAnimation from "./ServiceAnimation";
 import ServiceFallbackIcon from "./ServiceFallbackIcon";
 import type { ServiceItem } from "./ServiceCard";
+import { ROUTES } from "../../router/paths";
 
 interface Props {
   service: ServiceItem | null;
@@ -11,6 +13,7 @@ interface Props {
 
 export default function ServiceModal({ service, onClose }: Props) {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!service) return;
@@ -37,6 +40,15 @@ export default function ServiceModal({ service, onClose }: Props) {
   if (!service) return null;
 
   const titleId = `service-modal-title-${service.id}`;
+  const title = t(`services.${service.id}.title`);
+  const intro = t(`services.${service.id}.intro`);
+  const includes = t(`services.${service.id}.includes`, {
+    returnObjects: true,
+  }) as string[];
+  const helps = t(`services.${service.id}.helps`, {
+    returnObjects: true,
+  }) as string[];
+  const suitableFor = t(`services.${service.id}.suitableFor`);
 
   return (
     <div
@@ -53,7 +65,7 @@ export default function ServiceModal({ service, onClose }: Props) {
           ref={closeButtonRef}
           type="button"
           onClick={onClose}
-          aria-label="Zatvoriť"
+          aria-label={t("common.buttons.closeAria")}
           className="absolute right-4 top-4 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink-100 bg-white text-ink-700 transition-colors hover:border-ink-900 hover:text-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40"
         >
           <svg
@@ -78,7 +90,7 @@ export default function ServiceModal({ service, onClose }: Props) {
                 <div className="grid h-full w-full place-items-center p-5">
                   <ServiceAnimation
                     src={service.animation}
-                    label={service.title}
+                    label={title}
                     fallback={
                       <div className="h-full max-h-28 w-full max-w-[120px]">
                         <ServiceFallbackIcon kind={service.id} />
@@ -92,54 +104,54 @@ export default function ServiceModal({ service, onClose }: Props) {
 
           <div className="px-6 py-6 sm:px-8 sm:py-8 md:px-10">
             <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-              Služba
+              {t("servicesPage.modal.label")}
             </span>
             <h2
               id={titleId}
               className="mt-2 text-2xl font-semibold tracking-tightish text-ink-900 sm:text-3xl"
             >
-              {service.title}
+              {title}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-ink-700 sm:text-base">
-              {service.intro}
+              {intro}
             </p>
 
-            <Section title="Čo zahŕňa">
+            <Section title={t("servicesPage.modal.includes")}>
               <ul className="space-y-1.5">
-                {service.includes.map((item) => (
+                {includes.map((item) => (
                   <BulletRow key={item}>{item}</BulletRow>
                 ))}
               </ul>
             </Section>
 
-            <Section title="Ako pomáhame">
+            <Section title={t("servicesPage.modal.helps")}>
               <ul className="space-y-1.5">
-                {service.helps.map((item) => (
+                {helps.map((item) => (
                   <BulletRow key={item}>{item}</BulletRow>
                 ))}
               </ul>
             </Section>
 
-            <Section title="Pre koho je služba vhodná">
+            <Section title={t("servicesPage.modal.suitableFor")}>
               <p className="text-sm leading-relaxed text-ink-700">
-                {service.suitableFor}
+                {suitableFor}
               </p>
             </Section>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
-                to="/contact"
+                to={ROUTES.contact}
                 onClick={onClose}
                 className="inline-flex items-center justify-center rounded-full bg-ink-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ink-800"
               >
-                Kontaktujte nás
+                {t("common.buttons.contact")}
               </Link>
               <button
                 type="button"
                 onClick={onClose}
                 className="inline-flex items-center justify-center rounded-full border border-ink-200 bg-white px-5 py-2.5 text-sm font-medium text-ink-900 transition-colors hover:border-ink-900"
               >
-                Zavrieť
+                {t("common.buttons.close")}
               </button>
             </div>
           </div>

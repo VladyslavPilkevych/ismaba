@@ -1,0 +1,398 @@
+{
+  "common": {
+    "brand": "ISMABA",
+    "language": {
+      "sk": "SK",
+      "en": "EN",
+      "switchTo": "Switch language"
+    },
+    "buttons": {
+      "contact": "Contact us",
+      "viewServices": "View services",
+      "learnMore": "Learn more",
+      "close": "Close",
+      "closeAria": "Close",
+      "allServices": "All services"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "label": "Apartment building management",
+      "title": "Apartment building management without the chaos",
+      "subtitle": "Technical, financial and communication management for apartment buildings — clear, reliable and focused on the needs of owners.",
+      "badges": [
+        "Technical management",
+        "Financial management",
+        "Communication with owners"
+      ],
+      "cardCaption": "Management · Service · Communication"
+    },
+    "services": {
+      "label": "Services",
+      "title": "What we handle for your building",
+      "description": "Comprehensive management of an apartment building covering technical maintenance, finances and communication with owners.",
+      "items": [
+        {
+          "title": "Technical management",
+          "text": "Day-to-day requests, maintenance and coordination with suppliers."
+        },
+        {
+          "title": "Financial management",
+          "text": "Clear bookkeeping, payments and documents for owners."
+        },
+        {
+          "title": "Communication",
+          "text": "Meetings, voting and clear information for owners."
+        }
+      ]
+    },
+    "howItWorks": {
+      "label": "Process",
+      "title": "How it works",
+      "stepLabel": "Step {{n}}",
+      "steps": [
+        {
+          "title": "We assess the building",
+          "text": "We review the technical, financial and communication needs of the building."
+        },
+        {
+          "title": "We propose a plan",
+          "text": "We prepare a clear approach, priorities and a way to work with owners."
+        },
+        {
+          "title": "We run the management",
+          "text": "We coordinate requests, service, finances and communication throughout the year."
+        }
+      ]
+    },
+    "values": {
+      "label": "Values",
+      "title": "What our management stands on",
+      "items": [
+        {
+          "title": "Transparency",
+          "text": "Owners deserve a clear view of what's happening in the building."
+        },
+        {
+          "title": "Integrity",
+          "text": "Managing a building must be responsible, factual and reliable."
+        },
+        {
+          "title": "Management",
+          "text": "Technical, financial and organisational matters need clear leadership."
+        },
+        {
+          "title": "Action",
+          "text": "Problems shouldn't be delayed. They need to be addressed in time."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Looking for more reliable management for your building?",
+      "text": "Get in touch and let's look at your building's needs together.",
+      "button": "Contact ISMABA"
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "label": "ISMABA services",
+      "title": "Services for renovation and management of apartment buildings",
+      "subtitle": "We help owners with the technical, financial and organisational needs of the building — from insulation and heating to renovation financing and insurance.",
+      "primary": "Contact us",
+      "secondary": "See our process"
+    },
+    "grid": {
+      "label": "Services",
+      "title": "What we'll take care of",
+      "description": "Five key areas we cover with a focus on clarity, responsibility and a long-term plan."
+    },
+    "process": {
+      "label": "How we work",
+      "title": "How we approach our services",
+      "stepLabel": "Step {{n}}",
+      "steps": [
+        {
+          "title": "Assessment",
+          "text": "We look at the current technical, financial or organisational state of the building."
+        },
+        {
+          "title": "Solution proposal",
+          "text": "We prepare a clear approach, priorities, budget and supporting materials for owners."
+        },
+        {
+          "title": "Owners' decision",
+          "text": "We help with communication, explaining options and preparing for meetings or voting."
+        },
+        {
+          "title": "Delivery and oversight",
+          "text": "We coordinate suppliers, deadlines, documentation and ongoing oversight."
+        }
+      ]
+    },
+    "why": {
+      "label": "Why ISMABA",
+      "title": "Why work with ISMABA",
+      "items": [
+        {
+          "title": "Clarity",
+          "text": "A clear picture of the building's state, finances and plan of works. No confusion."
+        },
+        {
+          "title": "Responsibility",
+          "text": "A factual approach, agreed deadlines and transparent communication with owners."
+        },
+        {
+          "title": "Communication",
+          "text": "Meetings, voting and ongoing updates so everyone knows what's going on."
+        },
+        {
+          "title": "Long-term plan",
+          "text": "Solutions for today and tomorrow — we think about what the building needs in five years."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Need to handle a service for your building?",
+      "text": "Send us a message and we'll look at the options for your building.",
+      "button": "Contact us"
+    },
+    "modal": {
+      "label": "Service",
+      "includes": "What it includes",
+      "helps": "How we help",
+      "suitableFor": "Who this service is for"
+    }
+  },
+  "services": {
+    "zateplenie": {
+      "title": "Insulation",
+      "description": "Façade renovation and lower energy consumption for the building.",
+      "bullets": [
+        "assessment of the building's condition",
+        "coordination of the project and execution",
+        "supporting materials for owners' decisions"
+      ],
+      "intro": "We help owners prepare a renovation that is technically sound, financially clear and well communicated. From the initial assessment to coordinating delivery, we make sure the modernisation has a clear plan.",
+      "includes": [
+        "assessment of the building's technical condition",
+        "preparing materials for owners' decisions",
+        "proposing the renovation approach",
+        "coordinating the budget and delivery steps",
+        "communication with suppliers and partners"
+      ],
+      "helps": [
+        "we explain renovation options in clear terms",
+        "we prepare materials for meetings and voting",
+        "we oversee the smooth running of the project"
+      ],
+      "suitableFor": "For buildings planning façade renovation, insulation or broader modernisation of shared parts."
+    },
+    "kurenie": {
+      "title": "Heating",
+      "description": "Solutions for efficient, safe and reliable heating.",
+      "bullets": [
+        "service and expert inspections",
+        "operational optimisation",
+        "communication with suppliers"
+      ],
+      "intro": "Heating management requires expertise, regular inspections and good coordination of service work. We address heating matters so that operations are stable, safe and efficient long-term.",
+      "includes": [
+        "service and expert inspections",
+        "communication with service suppliers",
+        "handling faults and operational issues",
+        "optimising heating operations",
+        "tracking the technical needs of equipment"
+      ],
+      "helps": [
+        "we coordinate service interventions",
+        "we help prevent outages and confusion",
+        "we keep owners informed of key steps and progress"
+      ],
+      "suitableFor": "For buildings that want heating under control and need a reliable partner for service and technical coordination."
+    },
+    "elektrina": {
+      "title": "Electricity",
+      "description": "Management of electrical wiring, inspections and technical requirements.",
+      "bullets": [
+        "inspections and safety",
+        "fault resolution",
+        "planning of repairs and modernisation"
+      ],
+      "intro": "Electrical wiring and equipment are essential to the safe operation of the building. We manage inspections, plan repairs and address technical requirements so the building's operation stays safe and clear.",
+      "includes": [
+        "inspections and mandatory checks",
+        "fault resolution",
+        "repair planning",
+        "modernisation of electrical wiring",
+        "communication with specialist suppliers"
+      ],
+      "helps": [
+        "we coordinate technical solutions and inspections",
+        "we maintain a clear overview of duties and deadlines",
+        "we help plan repairs and modernisation systematically"
+      ],
+      "suitableFor": "For buildings that need to address the safety, maintenance or renovation of electrical systems and wiring."
+    },
+    "financovanie": {
+      "title": "Renovation financing",
+      "description": "Help with a financing plan for renovation and modernisation of the building.",
+      "bullets": [
+        "budget and priorities",
+        "repair fund",
+        "materials for loans or grants"
+      ],
+      "intro": "Renovation needs not only a good technical plan but also a sensible financial setup. We help owners arrange financing so that the options are clear, comparable and sustainable long-term.",
+      "includes": [
+        "budgeting and setting priorities",
+        "working with the repair fund",
+        "materials for loans or grants",
+        "comparing financing options",
+        "financial materials for owners"
+      ],
+      "helps": [
+        "we prepare clear information for decision-making",
+        "we explain financial options in understandable terms",
+        "we connect the technical plan with realistic financing"
+      ],
+      "suitableFor": "For buildings planning a larger renovation, investments or wanting a better setup of the repair fund and financing for next steps."
+    },
+    "poistenie": {
+      "title": "Insurance",
+      "description": "A clear insurance solution for the building and related risks.",
+      "bullets": [
+        "review of insurance coverage",
+        "communication with the insurer",
+        "support during insurance claims"
+      ],
+      "intro": "Building insurance should match real needs and risks. We help owners gain a better overview of coverage, communication with the insurer and the steps involved in claims.",
+      "includes": [
+        "review of insurance coverage",
+        "communication with the insurer",
+        "support during insurance claims",
+        "keeping track of required documents",
+        "guidance through insurance options"
+      ],
+      "helps": [
+        "we help owners understand what is covered",
+        "we support communication during claim events",
+        "we improve clarity and confidence when handling insurance matters"
+      ],
+      "suitableFor": "For buildings that want to be sure their insurance solution matches the building's real needs."
+    }
+  },
+  "about": {
+    "hero": {
+      "label": "About us",
+      "title": "Building management stands on trust, clarity and responsibility.",
+      "subtitle": "ISMABA helps apartment-building owners address the technical, financial and organisational needs of the building clearly and reliably."
+    },
+    "mission": {
+      "label": "Our mission",
+      "title": "Our goal is a calmer-running building",
+      "text": "An apartment building is a shared space of many owners. That's why it needs management that is factual, understandable and sustainable long-term."
+    },
+    "values": {
+      "label": "Values",
+      "title": "What our management stands on",
+      "items": [
+        {
+          "title": "Transparency",
+          "text": "Owners deserve a clear view of what's happening in the building."
+        },
+        {
+          "title": "Integrity",
+          "text": "Managing a building must be responsible, factual and reliable."
+        },
+        {
+          "title": "Management",
+          "text": "Technical, financial and organisational matters need clear leadership."
+        },
+        {
+          "title": "Action",
+          "text": "Problems shouldn't be delayed. They need to be addressed in time."
+        }
+      ]
+    },
+    "differences": {
+      "label": "What sets us apart",
+      "title": "What makes us different",
+      "items": [
+        {
+          "title": "Clear communication",
+          "text": "Owners receive understandable information and materials — no technical jargon."
+        },
+        {
+          "title": "Technical overview",
+          "text": "We look at the building as a whole — from the façade to heating and electricity."
+        },
+        {
+          "title": "Responsible approach to finances",
+          "text": "We run the building's finances with clear rules and an eye on the long-term plan."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Want to see what management of your building could look like?",
+      "button": "Contact us"
+    }
+  },
+  "contact": {
+    "hero": {
+      "label": "Contact",
+      "title": "Let's look at what your apartment building needs.",
+      "subtitle": "Write or call us. We're happy to get in touch and agree on next steps."
+    },
+    "cards": {
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "callCenter": "Call centre"
+    },
+    "hours": {
+      "label": "Opening hours",
+      "title": "Call centre",
+      "note": "Outside these hours you can contact us by email or via the contact form.",
+      "days": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday"
+      }
+    },
+    "map": {
+      "addressLabel": "Address",
+      "open": "Open map",
+      "title": "Map — {{address}}"
+    },
+    "form": {
+      "label": "Form",
+      "title": "Send us a message",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "building": "Building name",
+      "message": "Message",
+      "submit": "Send message",
+      "success": "Thank you. Your message has been received."
+    }
+  },
+  "footer": {
+    "description": "Apartment building management — technical, financial and advisory service for owners of flats and non-residential spaces.",
+    "contactHeading": "Contact",
+    "servicesHeading": "Services",
+    "servicesList": [
+      "Technical management",
+      "Financial management",
+      "Advisory and modernisation",
+      "Communication with owners"
+    ],
+    "copyright": "© {{year}} ISMABA. All rights reserved.",
+    "tagline": "Apartment building management · Slovakia"
+  }
+}

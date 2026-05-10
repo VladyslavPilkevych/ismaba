@@ -1,26 +1,14 @@
+import { useTranslation } from "react-i18next";
 import { useReveal } from "../../hooks/useReveal";
 
-const reasons = [
-  {
-    title: "Prehľad",
-    text: "Jasný pohľad na stav domu, financie aj plán prác. Žiadne nejasnosti.",
-  },
-  {
-    title: "Zodpovednosť",
-    text: "Vecný prístup, dohodnuté termíny a transparentná komunikácia s vlastníkmi.",
-  },
-  {
-    title: "Komunikácia",
-    text: "Schôdze, hlasovania a priebežné informovanie, aby každý vedel, čo sa deje.",
-  },
-  {
-    title: "Dlhodobý plán",
-    text: "Riešenia nielen pre dnešok — počítame s tým, čo dom potrebuje o päť rokov.",
-  },
-];
+type Reason = { title: string; text: string };
 
-export default function WhyIsmaa() {
+export default function WhyIsmaba() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const { t } = useTranslation();
+  const reasons = t("servicesPage.why.items", {
+    returnObjects: true,
+  }) as Reason[];
 
   return (
     <section className="bg-white py-20 md:py-28">
@@ -30,10 +18,10 @@ export default function WhyIsmaa() {
       >
         <div className="max-w-2xl">
           <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-            Prečo ISMAA
+            {t("servicesPage.why.label")}
           </span>
           <h2 className="mt-3 text-3xl font-semibold tracking-tightish text-ink-900 sm:text-4xl">
-            Prečo riešiť služby s ISMAA
+            {t("servicesPage.why.title")}
           </h2>
         </div>
 

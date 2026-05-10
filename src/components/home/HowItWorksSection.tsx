@@ -1,22 +1,12 @@
+import { useTranslation } from "react-i18next";
 import { useReveal } from "../../hooks/useReveal";
 
-const steps = [
-  {
-    title: "Zhodnotíme stav domu",
-    text: "Pozrieme sa na technické, ekonomické a komunikačné potreby domu.",
-  },
-  {
-    title: "Navrhneme plán správy",
-    text: "Pripravíme jasný postup, priority a spôsob spolupráce s vlastníkmi.",
-  },
-  {
-    title: "Priebežne riešime správu",
-    text: "Koordinujeme požiadavky, servis, financie a komunikáciu počas roka.",
-  },
-];
+type Step = { title: string; text: string };
 
 export default function HowItWorksSection() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const { t } = useTranslation();
+  const steps = t("home.howItWorks.steps", { returnObjects: true }) as Step[];
 
   return (
     <section id="ako-to-funguje" className="bg-ink-50 py-20 md:py-28">
@@ -26,10 +16,10 @@ export default function HowItWorksSection() {
       >
         <div className="max-w-2xl">
           <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-            Postup
+            {t("home.howItWorks.label")}
           </span>
           <h2 className="mt-3 text-3xl font-semibold tracking-tightish text-ink-900 sm:text-4xl">
-            Ako to funguje
+            {t("home.howItWorks.title")}
           </h2>
         </div>
 
@@ -44,7 +34,7 @@ export default function HowItWorksSection() {
                   {idx + 1}
                 </span>
                 <span className="text-xs font-medium uppercase tracking-wider text-ink-500">
-                  Krok {idx + 1}
+                  {t("home.howItWorks.stepLabel", { n: idx + 1 })}
                 </span>
               </div>
               <h3 className="mt-4 text-lg font-semibold tracking-tightish text-ink-900">

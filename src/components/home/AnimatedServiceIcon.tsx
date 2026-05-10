@@ -55,7 +55,7 @@ export default function AnimatedServiceIcon({ kind }: Props) {
           aria-hidden="true"
         >
           <path
-            id="ismaa-pipe-path"
+            id="ismaba-pipe-path"
             d="M6 14h12a4 4 0 0 1 4 4v12a4 4 0 0 0 4 4h16"
             stroke="currentColor"
             strokeWidth="2.2"
@@ -63,7 +63,7 @@ export default function AnimatedServiceIcon({ kind }: Props) {
             fill="none"
             className="opacity-80"
           />
-          <circle r="2.4" fill="#1F8C84" className="ismaa-flow-dot opacity-0">
+          <circle r="2.4" fill="#1F8C84" className="ismaba-flow-dot opacity-0">
             <animateMotion
               dur="1.8s"
               repeatCount="indefinite"
@@ -107,7 +107,7 @@ export default function AnimatedServiceIcon({ kind }: Props) {
             width="8"
             height="16"
             rx="1.5"
-            className="ismaa-elevator-car fill-brand-100"
+            className="ismaba-elevator-car fill-brand-100"
             stroke="currentColor"
             strokeWidth="1.2"
           />
@@ -117,7 +117,7 @@ export default function AnimatedServiceIcon({ kind }: Props) {
             width="8"
             height="16"
             rx="1.5"
-            className="ismaa-elevator-car-right fill-brand-100"
+            className="ismaba-elevator-car-right fill-brand-100"
             stroke="currentColor"
             strokeWidth="1.2"
           />
@@ -145,7 +145,7 @@ export default function AnimatedServiceIcon({ kind }: Props) {
             width="6"
             height="10"
             rx="1.5"
-            className="ismaa-bar fill-brand-300 origin-bottom"
+            className="ismaba-bar fill-brand-300 origin-bottom"
           />
           <rect
             x="21"
@@ -153,7 +153,7 @@ export default function AnimatedServiceIcon({ kind }: Props) {
             width="6"
             height="18"
             rx="1.5"
-            className="ismaa-bar fill-brand-500 origin-bottom"
+            className="ismaba-bar fill-brand-500 origin-bottom"
             style={{ animationDelay: "60ms" }}
           />
           <rect
@@ -162,7 +162,7 @@ export default function AnimatedServiceIcon({ kind }: Props) {
             width="6"
             height="26"
             rx="1.5"
-            className="ismaa-bar fill-brand-700 origin-bottom"
+            className="ismaba-bar fill-brand-700 origin-bottom"
             style={{ animationDelay: "120ms" }}
           />
         </svg>
@@ -183,7 +183,7 @@ export default function AnimatedServiceIcon({ kind }: Props) {
             width="22"
             height="28"
             rx="2.5"
-            className="ismaa-doc ismaa-doc-1 fill-white"
+            className="ismaba-doc ismaba-doc-1 fill-white"
             stroke="currentColor"
             strokeWidth="1.4"
           />
@@ -193,7 +193,7 @@ export default function AnimatedServiceIcon({ kind }: Props) {
             width="22"
             height="28"
             rx="2.5"
-            className="ismaa-doc ismaa-doc-2 fill-white"
+            className="ismaba-doc ismaba-doc-2 fill-white"
             stroke="currentColor"
             strokeWidth="1.4"
           />
@@ -244,14 +244,14 @@ export default function AnimatedServiceIcon({ kind }: Props) {
             stroke="currentColor"
             strokeWidth="1.6"
             strokeLinejoin="round"
-            className="ismaa-bubble ismaa-bubble-1 fill-white"
+            className="ismaba-bubble ismaba-bubble-1 fill-white"
           />
           <path
             d="M18 28a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-2v4l-5-4h-7a4 4 0 0 1-4-4v-6Z"
             stroke="currentColor"
             strokeWidth="1.6"
             strokeLinejoin="round"
-            className="ismaa-bubble ismaa-bubble-2 fill-brand-50"
+            className="ismaba-bubble ismaba-bubble-2 fill-brand-50"
           />
         </svg>
       );

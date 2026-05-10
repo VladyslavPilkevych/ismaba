@@ -1,4 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 export default function Footer() {
+  const { t } = useTranslation();
+  const servicesList = t("footer.servicesList", {
+    returnObjects: true,
+  }) as string[];
+
   return (
     <footer className="border-t border-ink-100 bg-ink-50">
       <div className="mx-auto max-w-6xl px-6 py-14 grid gap-10 md:grid-cols-3">
@@ -8,18 +15,17 @@ export default function Footer() {
               I
             </span>
             <span className="text-base font-semibold tracking-tightish text-ink-900">
-              ISMAA
+              {t("common.brand")}
             </span>
           </div>
           <p className="mt-4 text-sm text-ink-500 max-w-xs">
-            Správa bytových domov — technický, ekonomický a poradenský servis
-            pre vlastníkov bytov a nebytových priestorov.
+            {t("footer.description")}
           </p>
         </div>
 
         <div className="text-sm text-ink-700">
           <h4 className="text-xs uppercase tracking-wider text-ink-500 mb-3">
-            Kontakt
+            {t("footer.contactHeading")}
           </h4>
           <ul className="space-y-2">
             <li>
@@ -28,8 +34,8 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a className="hover:text-ink-900" href="mailto:info@ismaa.sk">
-                info@ismaa.sk
+              <a className="hover:text-ink-900" href="mailto:info@ismaba.sk">
+                info@ismaba.sk
               </a>
             </li>
             <li>Handlovská 2981/28</li>
@@ -38,20 +44,19 @@ export default function Footer() {
 
         <div className="text-sm text-ink-700">
           <h4 className="text-xs uppercase tracking-wider text-ink-500 mb-3">
-            Služby
+            {t("footer.servicesHeading")}
           </h4>
           <ul className="space-y-2">
-            <li>Technická správa</li>
-            <li>Ekonomická správa</li>
-            <li>Poradenstvo a modernizácia</li>
-            <li>Komunikácia s vlastníkmi</li>
+            {servicesList.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </div>
       </div>
       <div className="border-t border-ink-100">
         <div className="mx-auto max-w-6xl px-6 py-6 text-xs text-ink-500 flex flex-col sm:flex-row gap-2 sm:justify-between">
-          <span>© {new Date().getFullYear()} ISMAA. Všetky práva vyhradené.</span>
-          <span>Správa bytových domov · Slovensko</span>
+          <span>{t("footer.copyright", { year: new Date().getFullYear() })}</span>
+          <span>{t("footer.tagline")}</span>
         </div>
       </div>
     </footer>

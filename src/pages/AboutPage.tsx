@@ -1,40 +1,9 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useReveal } from "../hooks/useReveal";
+import { ROUTES } from "../router/paths";
 
-const values = [
-  {
-    title: "Informovanosť",
-    text: "Vlastníci majú mať jasný prehľad o tom, čo sa v dome deje.",
-  },
-  {
-    title: "Serióznosť",
-    text: "Správa domu musí byť zodpovedná, vecná a spoľahlivá.",
-  },
-  {
-    title: "Manažment",
-    text: "Technické, ekonomické a organizačné veci potrebujú jasné vedenie.",
-  },
-  {
-    title: "Aktivita",
-    text: "Problémy netreba odkladať. Treba ich riešiť včas.",
-  },
-];
-
-const differences = [
-  {
-    title: "Jasná komunikácia",
-    text: "Vlastníci dostávajú zrozumiteľné informácie a podklady, nie technický žargón.",
-  },
-  {
-    title: "Technický prehľad",
-    text: "Pozeráme sa na dom ako celok — od fasády cez kúrenie po elektriku.",
-  },
-  {
-    title: "Zodpovedný prístup k financiám",
-    text: "Hospodárenie domu vedieme prehľadne, s pravidlami a s ohľadom na dlhodobý plán.",
-  },
-];
+type Item = { title: string; text: string };
 
 function MissionVisual() {
   return (
@@ -64,14 +33,16 @@ function MissionVisual() {
 }
 
 export default function AboutPage() {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }, []);
-
+  const { t } = useTranslation();
   const mission = useReveal<HTMLDivElement>();
   const valuesReveal = useReveal<HTMLDivElement>();
   const diffReveal = useReveal<HTMLDivElement>();
   const ctaReveal = useReveal<HTMLDivElement>();
+
+  const values = t("about.values.items", { returnObjects: true }) as Item[];
+  const differences = t("about.differences.items", {
+    returnObjects: true,
+  }) as Item[];
 
   return (
     <>
@@ -79,14 +50,13 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <div className="max-w-3xl reveal is-visible">
             <span className="inline-flex items-center rounded-full border border-brand-100 bg-white/60 px-3 py-1 text-xs font-medium uppercase tracking-wider text-brand-700">
-              O nás
+              {t("about.hero.label")}
             </span>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.1] tracking-tightish text-ink-900 sm:text-5xl md:text-[3.25rem]">
-              Správa domu stojí na dôvere, prehľade a zodpovednosti.
+              {t("about.hero.title")}
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink-700 sm:text-lg">
-              ISMAA pomáha vlastníkom bytových domov riešiť technické,
-              ekonomické a organizačné potreby domu jasne a spoľahlivo.
+              {t("about.hero.subtitle")}
             </p>
           </div>
         </div>
@@ -99,15 +69,13 @@ export default function AboutPage() {
         >
           <div>
             <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-              Naše poslanie
+              {t("about.mission.label")}
             </span>
             <h2 className="mt-3 text-3xl font-semibold tracking-tightish text-ink-900 sm:text-4xl">
-              Naším cieľom je pokojnejší chod domu
+              {t("about.mission.title")}
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-700">
-              Bytový dom je spoločný priestor mnohých vlastníkov. Preto si
-              vyžaduje správu, ktorá je vecná, zrozumiteľná a dlhodobo
-              udržateľná.
+              {t("about.mission.text")}
             </p>
           </div>
           <div className="relative">
@@ -131,10 +99,10 @@ export default function AboutPage() {
         >
           <div className="max-w-2xl">
             <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-              Hodnoty
+              {t("about.values.label")}
             </span>
             <h2 className="mt-3 text-3xl font-semibold tracking-tightish text-ink-900 sm:text-4xl">
-              Na čom stojí naša správa
+              {t("about.values.title")}
             </h2>
           </div>
 
@@ -167,10 +135,10 @@ export default function AboutPage() {
         >
           <div className="max-w-2xl">
             <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-              V čom sme iní
+              {t("about.differences.label")}
             </span>
             <h2 className="mt-3 text-3xl font-semibold tracking-tightish text-ink-900 sm:text-4xl">
-              Čo nás odlišuje
+              {t("about.differences.title")}
             </h2>
           </div>
 
@@ -198,14 +166,14 @@ export default function AboutPage() {
           className={`mx-auto max-w-4xl px-6 text-center reveal ${ctaReveal.visible ? "is-visible" : ""}`}
         >
           <h2 className="text-3xl font-semibold tracking-tightish text-ink-900 sm:text-4xl">
-            Chcete vedieť, ako by mohla vyzerať správa vášho domu?
+            {t("about.cta.title")}
           </h2>
           <div className="mt-8 flex justify-center">
             <Link
-              to="/contact"
+              to={ROUTES.contact}
               className="inline-flex items-center justify-center rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-ink-800"
             >
-              Kontaktujte nás
+              {t("about.cta.button")}
             </Link>
           </div>
         </div>

@@ -1,52 +1,39 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { useReveal } from "../hooks/useReveal";
+
+type IconKind = "phone" | "email" | "address" | "callcenter";
 
 interface ContactCard {
   label: string;
   value: string;
   href?: string;
-  icon: "phone" | "email" | "address" | "callcenter";
+  icon: IconKind;
 }
 
-const cards: ContactCard[] = [
-  {
-    label: "Telefón",
-    value: "0905 352 554",
-    href: "tel:+421905352554",
-    icon: "phone",
-  },
-  {
-    label: "Email",
-    value: "info@ismaa.sk",
-    href: "mailto:info@ismaa.sk",
-    icon: "email",
-  },
-  {
-    label: "Adresa",
-    value: "Handlovská 2981/28",
-    icon: "address",
-  },
-  {
-    label: "Call centrum",
-    value: "0905 352 554",
-    href: "tel:+421905352554",
-    icon: "callcenter",
-  },
-];
-
-const callCenterHours: { day: string; hours: string }[] = [
-  { day: "Pondelok", hours: "09:00 – 11:00" },
-  { day: "Utorok", hours: "13:00 – 17:00" },
-  { day: "Streda", hours: "08:00 – 10:00" },
-  { day: "Štvrtok", hours: "08:00 – 12:00" },
-];
-
 const ADDRESS = "Handlovská 2981/28";
+const PHONE_DISPLAY = "0905 352 554";
+const PHONE_TEL = "tel:+421905352554";
+const EMAIL = "info@ismaba.sk";
+
 const MAP_QUERY = encodeURIComponent(ADDRESS);
 const MAP_EMBED_SRC = `https://www.google.com/maps?q=${MAP_QUERY}&output=embed`;
 const MAP_OPEN_HREF = `https://www.google.com/maps/search/?api=1&query=${MAP_QUERY}`;
 
-function ContactIcon({ kind }: { kind: ContactCard["icon"] }) {
+const callCenterDayKeys = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+] as const;
+const callCenterHours: Record<(typeof callCenterDayKeys)[number], string> = {
+  monday: "09:00 – 11:00",
+  tuesday: "13:00 – 17:00",
+  wednesday: "08:00 – 10:00",
+  thursday: "08:00 – 12:00",
+};
+
+function ContactIcon({ kind }: { kind: IconKind }) {
   const cls = "h-5 w-5 text-brand-700";
   switch (kind) {
     case "phone":
@@ -122,11 +109,34 @@ function ContactIcon({ kind }: { kind: ContactCard["icon"] }) {
 }
 
 export default function ContactPage() {
+  const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }, []);
+  const cards: ContactCard[] = [
+    {
+      label: t("contact.cards.phone"),
+      value: PHONE_DISPLAY,
+      href: PHONE_TEL,
+      icon: "phone",
+    },
+    {
+      label: t("contact.cards.email"),
+      value: EMAIL,
+      href: `mailto:${EMAIL}`,
+      icon: "email",
+    },
+    {
+      label: t("contact.cards.address"),
+      value: ADDRESS,
+      icon: "address",
+    },
+    {
+      label: t("contact.cards.callCenter"),
+      value: PHONE_DISPLAY,
+      href: PHONE_TEL,
+      icon: "callcenter",
+    },
+  ];
 
   const cardsReveal = useReveal<HTMLDivElement>();
   const hoursReveal = useReveal<HTMLDivElement>();
@@ -144,14 +154,13 @@ export default function ContactPage() {
         <div className="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <div className="max-w-3xl reveal is-visible">
             <span className="inline-flex items-center rounded-full border border-brand-100 bg-white/60 px-3 py-1 text-xs font-medium uppercase tracking-wider text-brand-700">
-              Kontakt
+              {t("contact.hero.label")}
             </span>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.1] tracking-tightish text-ink-900 sm:text-5xl md:text-[3.25rem]">
-              Poďme sa pozrieť na potreby vášho bytového domu.
+              {t("contact.hero.title")}
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink-700 sm:text-lg">
-              Napíšte nám alebo zavolajte. Radi sa s vami spojíme a dohodneme
-              ďalší postup.
+              {t("contact.hero.subtitle")}
             </p>
           </div>
         </div>
@@ -166,20 +175,20 @@ export default function ContactPage() {
             {cards.map((card) => {
               const inner = (
                 <>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50">
                     <ContactIcon kind={card.icon} />
                   </div>
                   <div className="mt-4 text-xs font-medium uppercase tracking-wider text-ink-500">
                     {card.label}
                   </div>
-                  <div className="mt-1 text-sm font-medium text-ink-900">
+                  <div className="mt-1 break-words text-sm font-medium text-ink-900">
                     {card.value}
                   </div>
                 </>
               );
 
               const className =
-                "block rounded-3xl border border-ink-100 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-100 hover:shadow-card";
+                "flex flex-col items-center text-center rounded-3xl border border-ink-100 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-100 hover:shadow-card";
 
               return card.href ? (
                 <a key={card.label} href={card.href} className={className}>
@@ -204,38 +213,39 @@ export default function ContactPage() {
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-                  Otváracie hodiny
+                  {t("contact.hours.label")}
                 </span>
                 <h2 className="mt-2 text-2xl font-semibold tracking-tightish text-ink-900 sm:text-3xl">
-                  Call centrum
+                  {t("contact.hours.title")}
                 </h2>
               </div>
               <a
-                href="tel:+421905352554"
+                href={PHONE_TEL}
                 className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 transition-colors hover:bg-brand-100"
               >
                 <ContactIcon kind="phone" />
-                0905 352 554
+                {PHONE_DISPLAY}
               </a>
             </div>
 
             <ul className="mt-6 divide-y divide-ink-100 border-y border-ink-100">
-              {callCenterHours.map((row) => (
+              {callCenterDayKeys.map((key) => (
                 <li
-                  key={row.day}
+                  key={key}
                   className="flex items-center justify-between py-3 text-sm"
                 >
-                  <span className="text-ink-700">{row.day}</span>
+                  <span className="text-ink-700">
+                    {t(`contact.hours.days.${key}`)}
+                  </span>
                   <span className="font-medium tabular-nums text-ink-900">
-                    {row.hours}
+                    {callCenterHours[key]}
                   </span>
                 </li>
               ))}
             </ul>
 
             <p className="mt-4 text-xs text-ink-500">
-              Mimo uvedených hodín nás môžete kontaktovať e-mailom alebo cez
-              kontaktný formulár.
+              {t("contact.hours.note")}
             </p>
           </div>
         </div>
@@ -248,10 +258,10 @@ export default function ContactPage() {
         >
           <div className="rounded-3xl border border-ink-100 bg-white p-6 shadow-card sm:p-10">
             <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-              Formulár
+              {t("contact.form.label")}
             </span>
             <h2 className="mt-2 text-2xl font-semibold tracking-tightish text-ink-900 sm:text-3xl">
-              Napíšte nám
+              {t("contact.form.title")}
             </h2>
 
             {submitted ? (
@@ -259,24 +269,33 @@ export default function ContactPage() {
                 role="status"
                 className="mt-6 rounded-2xl border border-brand-100 bg-brand-50 p-5 text-sm text-brand-900"
               >
-                Ďakujeme. Vašu správu sme prijali.
+                {t("contact.form.success")}
               </div>
             ) : (
               <form className="mt-6 grid gap-4" onSubmit={handleSubmit}>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <Field id="name" label="Meno" required />
-                  <Field id="email" label="Email" type="email" required />
+                  <Field id="name" label={t("contact.form.name")} required />
+                  <Field
+                    id="email"
+                    label={t("contact.form.email")}
+                    type="email"
+                    required
+                  />
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <Field id="phone" label="Telefón" type="tel" />
-                  <Field id="building" label="Názov bytového domu" />
+                  <Field
+                    id="phone"
+                    label={t("contact.form.phone")}
+                    type="tel"
+                  />
+                  <Field id="building" label={t("contact.form.building")} />
                 </div>
                 <div>
                   <label
                     htmlFor="message"
                     className="block text-xs font-medium uppercase tracking-wider text-ink-500"
                   >
-                    Správa
+                    {t("contact.form.message")}
                   </label>
                   <textarea
                     id="message"
@@ -291,7 +310,7 @@ export default function ContactPage() {
                     type="submit"
                     className="inline-flex items-center justify-center rounded-full bg-ink-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-ink-800"
                   >
-                    Odoslať správu
+                    {t("contact.form.submit")}
                   </button>
                 </div>
               </form>
@@ -309,7 +328,7 @@ export default function ContactPage() {
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-100 px-5 py-4 sm:px-6">
               <div>
                 <span className="text-xs font-medium uppercase tracking-wider text-ink-500">
-                  Adresa
+                  {t("contact.map.addressLabel")}
                 </span>
                 <div className="mt-1 text-sm font-medium text-ink-900">
                   {ADDRESS}
@@ -321,7 +340,7 @@ export default function ContactPage() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-900 transition-colors hover:border-ink-900"
               >
-                Otvoriť mapu
+                {t("contact.map.open")}
                 <svg
                   viewBox="0 0 16 16"
                   fill="none"
@@ -340,7 +359,7 @@ export default function ContactPage() {
             </div>
             <div className="aspect-[16/9] w-full bg-ink-50">
               <iframe
-                title={`Mapa — ${ADDRESS}`}
+                title={t("contact.map.title", { address: ADDRESS })}
                 src={MAP_EMBED_SRC}
                 className="h-full w-full border-0"
                 loading="lazy"

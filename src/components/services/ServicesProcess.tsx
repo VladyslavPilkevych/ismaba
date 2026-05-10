@@ -1,26 +1,14 @@
+import { useTranslation } from "react-i18next";
 import { useReveal } from "../../hooks/useReveal";
 
-const steps = [
-  {
-    title: "Zhodnotenie stavu",
-    text: "Pozrieme sa na aktuálny technický, ekonomický alebo organizačný stav domu.",
-  },
-  {
-    title: "Návrh riešenia",
-    text: "Pripravíme jasný postup, priority, rozpočet a podklady pre vlastníkov.",
-  },
-  {
-    title: "Rozhodnutie vlastníkov",
-    text: "Pomôžeme s komunikáciou, vysvetlením možností a prípravou na schôdzu alebo hlasovanie.",
-  },
-  {
-    title: "Realizácia a kontrola",
-    text: "Koordinujeme dodávateľov, termíny, dokumentáciu a priebežnú kontrolu.",
-  },
-];
+type Step = { title: string; text: string };
 
 export default function ServicesProcess() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const { t } = useTranslation();
+  const steps = t("servicesPage.process.steps", {
+    returnObjects: true,
+  }) as Step[];
 
   return (
     <section id="postup" className="bg-ink-50 py-20 md:py-28">
@@ -30,10 +18,10 @@ export default function ServicesProcess() {
       >
         <div className="max-w-2xl">
           <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-            Postup spolupráce
+            {t("servicesPage.process.label")}
           </span>
           <h2 className="mt-3 text-3xl font-semibold tracking-tightish text-ink-900 sm:text-4xl">
-            Ako pri službách postupujeme
+            {t("servicesPage.process.title")}
           </h2>
         </div>
 
@@ -48,7 +36,7 @@ export default function ServicesProcess() {
                   {idx + 1}
                 </span>
                 <span className="text-xs font-medium uppercase tracking-wider text-ink-500">
-                  Krok {idx + 1}
+                  {t("servicesPage.process.stepLabel", { n: idx + 1 })}
                 </span>
               </div>
               <h3 className="mt-4 text-lg font-semibold tracking-tightish text-ink-900">

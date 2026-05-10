@@ -47,63 +47,63 @@ body {
 }
 
 /* Service icon hover micro-interactions */
-.group:hover .ismaa-flow-dot,
-.group:focus-within .ismaa-flow-dot {
+.group:hover .ismaba-flow-dot,
+.group:focus-within .ismaba-flow-dot {
   opacity: 1;
   transition: opacity 200ms ease-out;
 }
 
-.ismaa-elevator-car,
-.ismaa-elevator-car-right {
+.ismaba-elevator-car,
+.ismaba-elevator-car-right {
   transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.group:hover .ismaa-elevator-car,
-.group:focus-within .ismaa-elevator-car {
+.group:hover .ismaba-elevator-car,
+.group:focus-within .ismaba-elevator-car {
   transform: translateY(11px);
 }
-.group:hover .ismaa-elevator-car-right,
-.group:focus-within .ismaa-elevator-car-right {
+.group:hover .ismaba-elevator-car-right,
+.group:focus-within .ismaba-elevator-car-right {
   transform: translateY(-11px);
 }
 
-.ismaa-bar {
+.ismaba-bar {
   transform: scaleY(0.55);
   transition: transform 500ms cubic-bezier(0.34, 1.32, 0.64, 1);
 }
-.group:hover .ismaa-bar,
-.group:focus-within .ismaa-bar {
+.group:hover .ismaba-bar,
+.group:focus-within .ismaba-bar {
   transform: scaleY(1);
 }
 
-.ismaa-doc {
+.ismaba-doc {
   transition: transform 400ms ease-out;
 }
-.ismaa-doc-1 {
+.ismaba-doc-1 {
   transform: rotate(4deg) translate(2px, 0);
   transform-origin: center;
 }
-.ismaa-doc-2 {
+.ismaba-doc-2 {
   transform: rotate(-3deg) translate(-1px, 0);
   transform-origin: center;
 }
-.group:hover .ismaa-doc-1,
-.group:focus-within .ismaa-doc-1 {
+.group:hover .ismaba-doc-1,
+.group:focus-within .ismaba-doc-1 {
   transform: rotate(0deg) translate(2px, -1px);
 }
-.group:hover .ismaa-doc-2,
-.group:focus-within .ismaa-doc-2 {
+.group:hover .ismaba-doc-2,
+.group:focus-within .ismaba-doc-2 {
   transform: rotate(0deg) translate(-1px, 1px);
 }
 
-.ismaa-bubble {
+.ismaba-bubble {
   transition: transform 400ms ease-out, opacity 400ms ease-out;
 }
-.ismaa-bubble-2 {
+.ismaba-bubble-2 {
   transform: translate(-6px, 6px);
   opacity: 0.6;
 }
-.group:hover .ismaa-bubble-2,
-.group:focus-within .ismaa-bubble-2 {
+.group:hover .ismaba-bubble-2,
+.group:focus-within .ismaba-bubble-2 {
   transform: translate(0, 0);
   opacity: 1;
 }

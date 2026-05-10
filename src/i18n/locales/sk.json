@@ -1,0 +1,398 @@
+{
+  "common": {
+    "brand": "ISMABA",
+    "language": {
+      "sk": "SK",
+      "en": "EN",
+      "switchTo": "Prepnúť jazyk"
+    },
+    "buttons": {
+      "contact": "Kontaktujte nás",
+      "viewServices": "Pozrieť služby",
+      "learnMore": "Zistiť viac",
+      "close": "Zavrieť",
+      "closeAria": "Zatvoriť",
+      "allServices": "Všetky služby"
+    }
+  },
+  "nav": {
+    "home": "Domov",
+    "services": "Služby",
+    "about": "O nás",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "hero": {
+      "label": "Správa bytových domov",
+      "title": "Správa bytových domov bez chaosu",
+      "subtitle": "Technická, ekonomická a komunikačná správa pre bytové domy — prehľadne, spoľahlivo a s dôrazom na potreby vlastníkov.",
+      "badges": [
+        "Technická správa",
+        "Ekonomická správa",
+        "Komunikácia s vlastníkmi"
+      ],
+      "cardCaption": "Správa · Servis · Komunikácia"
+    },
+    "services": {
+      "label": "Služby",
+      "title": "Čo pre váš dom riešime",
+      "description": "Komplexná správa bytového domu, ktorá pokrýva technickú údržbu, financie aj komunikáciu s vlastníkmi.",
+      "items": [
+        {
+          "title": "Technická správa",
+          "text": "Každodenné požiadavky, údržba a koordinácia dodávateľov."
+        },
+        {
+          "title": "Ekonomická správa",
+          "text": "Prehľadné hospodárenie, platby a doklady pre vlastníkov."
+        },
+        {
+          "title": "Komunikácia",
+          "text": "Schôdze, hlasovania a zrozumiteľné informovanie vlastníkov."
+        }
+      ]
+    },
+    "howItWorks": {
+      "label": "Postup",
+      "title": "Ako to funguje",
+      "stepLabel": "Krok {{n}}",
+      "steps": [
+        {
+          "title": "Zhodnotíme stav domu",
+          "text": "Pozrieme sa na technické, ekonomické a komunikačné potreby domu."
+        },
+        {
+          "title": "Navrhneme plán správy",
+          "text": "Pripravíme jasný postup, priority a spôsob spolupráce s vlastníkmi."
+        },
+        {
+          "title": "Priebežne riešime správu",
+          "text": "Koordinujeme požiadavky, servis, financie a komunikáciu počas roka."
+        }
+      ]
+    },
+    "values": {
+      "label": "Hodnoty",
+      "title": "Na čom stojí naša správa",
+      "items": [
+        {
+          "title": "Informovanosť",
+          "text": "Vlastníci majú mať jasný prehľad o tom, čo sa v dome deje."
+        },
+        {
+          "title": "Serióznosť",
+          "text": "Správa domu musí byť zodpovedná, vecná a spoľahlivá."
+        },
+        {
+          "title": "Manažment",
+          "text": "Technické, ekonomické a organizačné veci potrebujú jasné vedenie."
+        },
+        {
+          "title": "Aktivita",
+          "text": "Problémy netreba odkladať. Treba ich riešiť včas."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Chcete spoľahlivejšiu správu pre váš bytový dom?",
+      "text": "Ozvite sa nám a pozrime sa spolu na potreby vášho domu.",
+      "button": "Kontaktujte ISMABA"
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "label": "Služby ISMABA",
+      "title": "Služby pre obnovu a správu bytových domov",
+      "subtitle": "Pomáhame vlastníkom riešiť technické, ekonomické a organizačné potreby domu — od zateplenia a kúrenia až po financovanie obnovy a poistenie.",
+      "primary": "Kontaktujte nás",
+      "secondary": "Pozrieť postup spolupráce"
+    },
+    "grid": {
+      "label": "Služby",
+      "title": "Čo pre váš dom zabezpečíme",
+      "description": "Päť kľúčových oblastí, ktoré pokrývame s dôrazom na prehľadnosť, zodpovednosť a dlhodobý plán."
+    },
+    "process": {
+      "label": "Postup spolupráce",
+      "title": "Ako pri službách postupujeme",
+      "stepLabel": "Krok {{n}}",
+      "steps": [
+        {
+          "title": "Zhodnotenie stavu",
+          "text": "Pozrieme sa na aktuálny technický, ekonomický alebo organizačný stav domu."
+        },
+        {
+          "title": "Návrh riešenia",
+          "text": "Pripravíme jasný postup, priority, rozpočet a podklady pre vlastníkov."
+        },
+        {
+          "title": "Rozhodnutie vlastníkov",
+          "text": "Pomôžeme s komunikáciou, vysvetlením možností a prípravou na schôdzu alebo hlasovanie."
+        },
+        {
+          "title": "Realizácia a kontrola",
+          "text": "Koordinujeme dodávateľov, termíny, dokumentáciu a priebežnú kontrolu."
+        }
+      ]
+    },
+    "why": {
+      "label": "Prečo ISMABA",
+      "title": "Prečo riešiť služby s ISMABA",
+      "items": [
+        {
+          "title": "Prehľad",
+          "text": "Jasný pohľad na stav domu, financie aj plán prác. Žiadne nejasnosti."
+        },
+        {
+          "title": "Zodpovednosť",
+          "text": "Vecný prístup, dohodnuté termíny a transparentná komunikácia s vlastníkmi."
+        },
+        {
+          "title": "Komunikácia",
+          "text": "Schôdze, hlasovania a priebežné informovanie, aby každý vedel, čo sa deje."
+        },
+        {
+          "title": "Dlhodobý plán",
+          "text": "Riešenia nielen pre dnešok — počítame s tým, čo dom potrebuje o päť rokov."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Potrebujete vyriešiť službu pre váš bytový dom?",
+      "text": "Napíšte nám a pozrieme sa na možnosti riešenia pre váš dom.",
+      "button": "Kontaktujte nás"
+    },
+    "modal": {
+      "label": "Služba",
+      "includes": "Čo zahŕňa",
+      "helps": "Ako pomáhame",
+      "suitableFor": "Pre koho je služba vhodná"
+    }
+  },
+  "services": {
+    "zateplenie": {
+      "title": "Zateplenie",
+      "description": "Obnova fasády a zníženie energetickej náročnosti domu.",
+      "bullets": [
+        "posúdenie stavu domu",
+        "koordinácia projektu a realizácie",
+        "podklady pre rozhodovanie vlastníkov"
+      ],
+      "intro": "Pomáhame vlastníkom pripraviť obnovu bytového domu tak, aby bol celý proces technicky správny, finančne zrozumiteľný a dobre komunikovaný. Od prvotného posúdenia stavu až po koordináciu realizácie dohliadame na to, aby modernizácia mala jasný plán.",
+      "includes": [
+        "posúdenie technického stavu domu",
+        "prípravu podkladov pre rozhodovanie vlastníkov",
+        "návrh postupu obnovy",
+        "koordináciu rozpočtu a realizačných krokov",
+        "komunikáciu s dodávateľmi a partnermi"
+      ],
+      "helps": [
+        "vysvetľujeme možnosti obnovy jasným spôsobom",
+        "pripravujeme podklady pre schôdze a hlasovanie",
+        "dohliadame na plynulý priebeh projektu"
+      ],
+      "suitableFor": "Pre bytové domy, ktoré plánujú obnovu fasády, zateplenie alebo komplexnejšiu modernizáciu spoločných častí domu."
+    },
+    "kurenie": {
+      "title": "Kúrenie",
+      "description": "Riešenia pre efektívne, bezpečné a spoľahlivé vykurovanie.",
+      "bullets": [
+        "servis a odborné kontroly",
+        "optimalizácia prevádzky",
+        "komunikácia s dodávateľmi"
+      ],
+      "intro": "Správa vykurovania si vyžaduje odborný prístup, pravidelnú kontrolu a dobrú koordináciu servisu. Pomáhame riešiť technické otázky kúrenia tak, aby bola prevádzka stabilná, bezpečná a dlhodobo efektívna.",
+      "includes": [
+        "servis a odborné kontroly",
+        "komunikáciu so servisnými dodávateľmi",
+        "riešenie porúch a prevádzkových problémov",
+        "optimalizáciu prevádzky vykurovania",
+        "sledovanie technických potrieb zariadení"
+      ],
+      "helps": [
+        "koordinujeme servisné zásahy",
+        "pomáhame predchádzať výpadkom a nejasnostiam",
+        "informujeme vlastníkov o dôležitých krokoch a stave riešenia"
+      ],
+      "suitableFor": "Pre bytové domy, ktoré chcú mať vykurovanie pod kontrolou a potrebujú spoľahlivého partnera pre servis a technickú koordináciu."
+    },
+    "elektrina": {
+      "title": "Elektrina",
+      "description": "Správa elektrických rozvodov, revízií a technických požiadaviek.",
+      "bullets": [
+        "revízie a bezpečnosť",
+        "riešenie porúch",
+        "plánovanie opráv a modernizácie"
+      ],
+      "intro": "Elektrické rozvody a zariadenia sú dôležitou súčasťou bezpečného fungovania bytového domu. Pomáhame so správou revízií, plánovaním opráv a riešením technických požiadaviek tak, aby bol chod domu bezpečný a prehľadný.",
+      "includes": [
+        "revízie a povinné kontroly",
+        "riešenie porúch",
+        "plánovanie opráv",
+        "modernizáciu elektrických rozvodov",
+        "komunikáciu s odbornými dodávateľmi"
+      ],
+      "helps": [
+        "koordinujeme technické riešenia a kontroly",
+        "zabezpečujeme prehľad o povinnostiach a termínoch",
+        "pomáhame nastavovať opravy a modernizáciu systematicky"
+      ],
+      "suitableFor": "Pre bytové domy, ktoré potrebujú riešiť bezpečnosť, údržbu alebo obnovu elektrických zariadení a rozvodov."
+    },
+    "financovanie": {
+      "title": "Financovanie obnovy",
+      "description": "Pomoc s plánom financovania pri obnove a modernizácii domu.",
+      "bullets": [
+        "rozpočet a priority",
+        "fond opráv",
+        "podklady pre úver alebo dotácie"
+      ],
+      "intro": "Obnova domu potrebuje nielen dobrý technický plán, ale aj rozumné finančné nastavenie. Pomáhame vlastníkom pripraviť financovanie obnovy tak, aby boli možnosti jasné, porovnateľné a dlhodobo udržateľné.",
+      "includes": [
+        "rozpočet a stanovenie priorít",
+        "prácu s fondom opráv",
+        "podklady pre úver alebo dotácie",
+        "porovnanie možností financovania",
+        "finančné podklady pre vlastníkov"
+      ],
+      "helps": [
+        "pripravujeme prehľadné informácie pre rozhodovanie",
+        "pomáhame zrozumiteľne vysvetliť finančné možnosti",
+        "prepájame technický plán s realistickým financovaním"
+      ],
+      "suitableFor": "Pre bytové domy, ktoré plánujú väčšiu obnovu, investície alebo chcú lepšie nastaviť fond opráv a financovanie ďalších krokov."
+    },
+    "poistenie": {
+      "title": "Poistenie",
+      "description": "Prehľadné riešenie poistenia bytového domu a súvisiacich rizík.",
+      "bullets": [
+        "kontrola poistného krytia",
+        "komunikácia s poisťovňou",
+        "podpora pri poistných udalostiach"
+      ],
+      "intro": "Poistenie domu by malo zodpovedať reálnym potrebám a rizikám. Pomáhame vlastníkom získať lepší prehľad o poistnom krytí, komunikácii s poisťovňou a postupoch pri poistných udalostiach.",
+      "includes": [
+        "kontrolu poistného krytia",
+        "komunikáciu s poisťovňou",
+        "podporu pri poistných udalostiach",
+        "evidenciu potrebných podkladov",
+        "orientáciu v poistných možnostiach"
+      ],
+      "helps": [
+        "pomáhame vlastníkom zorientovať sa v tom, čo je kryté",
+        "podporujeme komunikáciu pri škodových udalostiach",
+        "zvyšujeme prehľad a istotu pri riešení poistných otázok"
+      ],
+      "suitableFor": "Pre bytové domy, ktoré chcú mať istotu, že ich poistné riešenie zodpovedá reálnym potrebám domu."
+    }
+  },
+  "about": {
+    "hero": {
+      "label": "O nás",
+      "title": "Správa domu stojí na dôvere, prehľade a zodpovednosti.",
+      "subtitle": "ISMABA pomáha vlastníkom bytových domov riešiť technické, ekonomické a organizačné potreby domu jasne a spoľahlivo."
+    },
+    "mission": {
+      "label": "Naše poslanie",
+      "title": "Naším cieľom je pokojnejší chod domu",
+      "text": "Bytový dom je spoločný priestor mnohých vlastníkov. Preto si vyžaduje správu, ktorá je vecná, zrozumiteľná a dlhodobo udržateľná."
+    },
+    "values": {
+      "label": "Hodnoty",
+      "title": "Na čom stojí naša správa",
+      "items": [
+        {
+          "title": "Informovanosť",
+          "text": "Vlastníci majú mať jasný prehľad o tom, čo sa v dome deje."
+        },
+        {
+          "title": "Serióznosť",
+          "text": "Správa domu musí byť zodpovedná, vecná a spoľahlivá."
+        },
+        {
+          "title": "Manažment",
+          "text": "Technické, ekonomické a organizačné veci potrebujú jasné vedenie."
+        },
+        {
+          "title": "Aktivita",
+          "text": "Problémy netreba odkladať. Treba ich riešiť včas."
+        }
+      ]
+    },
+    "differences": {
+      "label": "V čom sme iní",
+      "title": "Čo nás odlišuje",
+      "items": [
+        {
+          "title": "Jasná komunikácia",
+          "text": "Vlastníci dostávajú zrozumiteľné informácie a podklady, nie technický žargón."
+        },
+        {
+          "title": "Technický prehľad",
+          "text": "Pozeráme sa na dom ako celok — od fasády cez kúrenie po elektriku."
+        },
+        {
+          "title": "Zodpovedný prístup k financiám",
+          "text": "Hospodárenie domu vedieme prehľadne, s pravidlami a s ohľadom na dlhodobý plán."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Chcete vedieť, ako by mohla vyzerať správa vášho domu?",
+      "button": "Kontaktujte nás"
+    }
+  },
+  "contact": {
+    "hero": {
+      "label": "Kontakt",
+      "title": "Poďme sa pozrieť na potreby vášho bytového domu.",
+      "subtitle": "Napíšte nám alebo zavolajte. Radi sa s vami spojíme a dohodneme ďalší postup."
+    },
+    "cards": {
+      "phone": "Telefón",
+      "email": "Email",
+      "address": "Adresa",
+      "callCenter": "Call centrum"
+    },
+    "hours": {
+      "label": "Otváracie hodiny",
+      "title": "Call centrum",
+      "note": "Mimo uvedených hodín nás môžete kontaktovať e-mailom alebo cez kontaktný formulár.",
+      "days": {
+        "monday": "Pondelok",
+        "tuesday": "Utorok",
+        "wednesday": "Streda",
+        "thursday": "Štvrtok"
+      }
+    },
+    "map": {
+      "addressLabel": "Adresa",
+      "open": "Otvoriť mapu",
+      "title": "Mapa — {{address}}"
+    },
+    "form": {
+      "label": "Formulár",
+      "title": "Napíšte nám",
+      "name": "Meno",
+      "email": "Email",
+      "phone": "Telefón",
+      "building": "Názov bytového domu",
+      "message": "Správa",
+      "submit": "Odoslať správu",
+      "success": "Ďakujeme. Vašu správu sme prijali."
+    }
+  },
+  "footer": {
+    "description": "Správa bytových domov — technický, ekonomický a poradenský servis pre vlastníkov bytov a nebytových priestorov.",
+    "contactHeading": "Kontakt",
+    "servicesHeading": "Služby",
+    "servicesList": [
+      "Technická správa",
+      "Ekonomická správa",
+      "Poradenstvo a modernizácia",
+      "Komunikácia s vlastníkmi"
+    ],
+    "copyright": "© {{year}} ISMABA. Všetky práva vyhradené.",
+    "tagline": "Správa bytových domov · Slovensko"
+  }
+}

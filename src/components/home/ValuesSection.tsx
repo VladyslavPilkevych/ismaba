@@ -1,26 +1,12 @@
+import { useTranslation } from "react-i18next";
 import { useReveal } from "../../hooks/useReveal";
 
-const values = [
-  {
-    title: "Informovanosť",
-    text: "Vlastníci majú mať jasný prehľad o tom, čo sa v dome deje.",
-  },
-  {
-    title: "Serióznosť",
-    text: "Správa domu musí byť zodpovedná, vecná a spoľahlivá.",
-  },
-  {
-    title: "Manažment",
-    text: "Technické, ekonomické a organizačné veci potrebujú jasné vedenie.",
-  },
-  {
-    title: "Aktivita",
-    text: "Problémy netreba odkladať. Treba ich riešiť včas.",
-  },
-];
+type Value = { title: string; text: string };
 
 export default function ValuesSection() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const { t } = useTranslation();
+  const values = t("home.values.items", { returnObjects: true }) as Value[];
 
   return (
     <section id="hodnoty" className="bg-white py-20 md:py-28">
@@ -30,10 +16,10 @@ export default function ValuesSection() {
       >
         <div className="max-w-2xl">
           <span className="text-xs font-medium uppercase tracking-wider text-brand-700">
-            Hodnoty
+            {t("home.values.label")}
           </span>
           <h2 className="mt-3 text-3xl font-semibold tracking-tightish text-ink-900 sm:text-4xl">
-            Na čom stojí naša správa
+            {t("home.values.title")}
           </h2>
         </div>
 
